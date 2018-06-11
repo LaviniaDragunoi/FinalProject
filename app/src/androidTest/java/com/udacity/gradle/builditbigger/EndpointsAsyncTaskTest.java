@@ -2,8 +2,8 @@ package com.udacity.gradle.builditbigger;
 
 import android.support.test.runner.AndroidJUnit4;
 
-@RunWith(AndroidJUnit4)
-class EndpointsAsyncTaskTest {
+@RunWith(AndroidJUnit4.class)
+public class EndpointsAsyncTaskTest {
     @Rule
     public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
