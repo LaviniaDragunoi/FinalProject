@@ -1,4 +1,5 @@
 package com.udacity.gradle.builditbigger;
+
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -18,11 +19,11 @@ public class EndpointsAsyncTaskTest {
     @Rule
     public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
+    //Test if the string retrives by AsyncTask is non-empty
     @Test
-    public void buttonRetrivesNonEmptyString(){
+    public void buttonRetrivesNonEmptyString() {
         onView(withId(R.id.tell_joke_button)).perform(click());
         onView(withId(R.id.joke_text_view)).check(matches(not(withText(""))));
     }
-
 
 }

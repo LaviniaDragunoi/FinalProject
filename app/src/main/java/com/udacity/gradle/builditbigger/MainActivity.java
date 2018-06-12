@@ -13,7 +13,7 @@ import com.example.laviandroidlib.MyAndroidLibActivity;
 import com.example.lavijavalib.MyClass;
 
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

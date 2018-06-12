@@ -13,14 +13,11 @@ public class MyAndroidLibActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_android_lib);
-
-
-        if(getIntent().getStringExtra(MyAndroidLibActivity.JOKE_KEY) != null){
-        jokeString = getIntent().getStringExtra(MyAndroidLibActivity.JOKE_KEY);
+        //getting the intent and display the joke.
+        if (getIntent().getStringExtra(MyAndroidLibActivity.JOKE_KEY) != null) {
+            jokeString = getIntent().getStringExtra(MyAndroidLibActivity.JOKE_KEY);
             displayJoke = findViewById(R.id.joke_text_view);
-        displayJoke.setText(jokeString);
+            displayJoke.setText(jokeString);
         }
-
-
     }
 }
