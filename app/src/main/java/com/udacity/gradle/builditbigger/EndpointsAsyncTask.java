@@ -15,9 +15,17 @@ import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
 
-class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
+public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
+    public AsyncResponse response = null;
+
+    public interface AsyncResponse{
+        void asyncResponse(String joke);
+    }
+    public EndpointsAsyncTask(AsyncResponse response){
+        this.response = response;
+    }
 
     @Override
     protected String doInBackground(Pair<Context, String>... params) {
@@ -52,9 +60,7 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
     //Start intent (and Toast message ) with the link's jokes, for more fun.
     @Override
     protected void onPostExecute(String result) {
-        Intent intent = new Intent(context, MyAndroidLibActivity.class);
-        intent.putExtra(MyAndroidLibActivity.JOKE_KEY, result);
-        context.startActivity(intent);
+       response.asyncResponse(result);
         Toast.makeText(context, result, Toast.LENGTH_LONG).show();
     }
 }

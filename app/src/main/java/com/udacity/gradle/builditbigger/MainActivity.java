@@ -13,7 +13,8 @@ import com.example.laviandroidlib.MyAndroidLibActivity;
 import com.example.lavijavalib.MyClass;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements EndpointsAsyncTask.AsyncResponse{
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +48,14 @@ public class MainActivity extends AppCompatActivity {
     public void tellJoke(View view) {
         MyClass jokeFromJava = new MyClass();
         Intent intent = new Intent(this, MyAndroidLibActivity.class);
-        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
-        intent.putExtra(MyAndroidLibActivity.JOKE_KEY, jokeFromJava.getJOKE());
-        startActivity(intent);
+        new EndpointsAsyncTask(this).execute(new Pair<Context, String>(this, "Manfred"));
+
     }
 
+    @Override
+    public void asyncResponse(String joke) {
+        Intent intent = new Intent(MainActivity.this,MyAndroidLibActivity.class);
+        intent.putExtra(MyAndroidLibActivity.JOKE_KEY,joke);
+        startActivity(intent);
+    }
 }
